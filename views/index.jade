@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  
+  div(class='container')
+  
+    h1= title
+    h5 Welcome to #{title}
+  
+    table(class='table')
+      thead
+        tr
+          th Name
+          th Type
+          th Country
+          th Actions
+      tbody    
+        each player in players
+          tr
+            td
+              p #{player.name}
+            td  
+              p #{player.type} 
+            td  
+              p #{player.country}               
+            td
+              form(action='/delete',method='post')
+                input(type='hidden', value='#{player._id}', name='_id' id='_id')
+                input(type='submit', value='Delete', class='btn btn-danger')   
+            td
+              p
+                a(href='/profileofPlayer/#{player.name}' type='button' class='btn btn-primary')  view profile
+        
+            td
+              p 
+                a(href='/player/#{player.name}' type='button' class='btn btn-success') Update              
+  
+    form(action='/create', method='post' class='form')
+      h3 Add player
+      div(class='form-group')
+        input(id='name', name='name', type='text', placeholder='Name')
+      div(class='form-group')  
+        input(id='type', name='type', type='text', placeholder='type')  
+      div(class='form-group')  
+        input(id='country', name='country', type='text', placeholder='country')          
+      div(class='form-group')
+        input(type='submit', class='btn btn-primary', value='Submit') 

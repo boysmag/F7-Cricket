@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  
+  div(class='container')
+  
+    h1= title
+
+    form(action='/update', method='post' class="form-horizontal")
+      input(type='hidden', value='#{player._id}', name='_id' id='_id')
+      div(class="form-group")
+        input(id='name', name='name', type='text', placeholder='name', value='#{player.name}')
+      div(class="form-group")  
+        input(id='type', name='type', type='text', placeholder='type', value='#{player.type}')  
+      div(class="form-group")  
+        input(id='country', name='country', type='text', placeholder='country', value='#{player.country}')          
+      div(class="form-group")
+        input(type='submit', value='Update', class="btn btn-success") 
